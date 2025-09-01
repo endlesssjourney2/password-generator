@@ -6,13 +6,14 @@
   font-size: 16px;
   cursor: pointer;
   width: 100px;
-  background: #2d7;
+  color: #fff;
+  background: #2563eb;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   transition: all 0.2s ease-in-out;
 }
 
 .generateBtn:hover {
-  background: rgb(12, 203, 98);
+  background: #1d4ed8;
   transform: scale(1.05);
 }

@@ -1,0 +1,106 @@
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.savedHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.clearButton {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  padding: 6.5px 13px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.clearButton:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.clearButton:active {
+  transform: translateY(1px);
+}
+
+.savedTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.emptyMessage {
+  font-size: 1.4rem;
+  opacity: 0.6;
+}
+
+.savedList {
+  margin-top: 20px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.savedItem {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #2c2c44;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.savedItem:hover {
+  background: #3c3c54;
+  transform: translateY(-2px) scale(1.02);
+}
+
+.password {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  word-break: break-all;
+  color: #e0e0ff;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.copyButton,
+.deleteButton {
+  width: 85px;
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  background: #1e1e2f;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.copyButton:hover,
+.deleteButton:hover {
+  background: #33333b;
+}
+
+.copyButton:active,
+.deleteButton:active {
+  transform: translateY(1px) scale(0.9);
+}
