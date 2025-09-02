@@ -6,7 +6,10 @@ import SavedPage from "./pages/SavedPage/SavedPage";
 const App = () => {
   return (
     <div className="App">
-      <header className="header">Password Generator 🔐</header>
+      <header className="header">
+        Password Generator 🔐{" "}
+        <span className="afterword">generate password quickly and easily</span>
+      </header>
       <nav className="nav">
         <NavLink className="nav-link" to="/">
           Generate

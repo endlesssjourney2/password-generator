@@ -3,14 +3,20 @@ import s from "./GeneratePage.module.css";
 import GenerateBtn from "../../components/GenerateBtn/GenerateBtn";
 import CopyBtn from "../../components/CopyBtn/CopyBtn";
 import SaveBtn from "../../components/SaveBtn/SaveBtn";
+import { Checkbox } from "@mui/material";
 
-function generatePassword(length) {
-  const charset =
+function generatePassword(length, includeSpecialChars) {
+  const baseChars =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const specialChars = "!@#$%^&*_-";
+
+  const charset = includeSpecialChars ? baseChars + specialChars : baseChars;
+
   let retVal = "";
   for (let i = 0, n = charset.length; i < length; ++i) {
     retVal += charset.charAt(Math.floor(Math.random() * n));
   }
+
   return retVal;
 }
 
@@ -19,9 +25,10 @@ const GeneratePage = () => {
   const [copied, setCopied] = useState(false);
   const [saved, setSaved] = useState(false);
   const [length, setLength] = useState(8);
+  const [includeSpecialChars, setIncludeSpecialChars] = useState(false);
 
   const handleGenerate = () => {
-    const newPassword = generatePassword(length);
+    const newPassword = generatePassword(length, includeSpecialChars);
     setPassword(newPassword);
     setCopied(false);
   };
@@ -34,6 +41,17 @@ const GeneratePage = () => {
       setCopied(false);
       clearInterval(interval);
     }, 2000);
+  };
+
+  const handleChangeChecked = (e) => {
+    setIncludeSpecialChars(e.target.checked);
+  };
+
+  const handleInputValidation = (e) => {
+    const value = Number(e.target.value);
+    if (value < 6) setLength(6);
+    else if (value > 16) setLength(16);
+    else setLength(value);
   };
 
   const handleSave = () => {
@@ -66,11 +84,19 @@ const GeneratePage = () => {
             className={s.lengthInput}
             type="number"
             min="6"
-            max="15"
+            max="16"
             value={length}
-            onChange={(e) => setLength(Number(e.target.value))}
+            onChange={handleInputValidation}
           />
         </label>
+      </div>
+      <div className={s.specialCharsControl}>
+        <span className={s.checkboxLabel}>Include Special Characters</span>
+        <Checkbox
+          onChange={handleChangeChecked}
+          checked={includeSpecialChars}
+          color="secondary"
+        />
       </div>
       <div className={s.buttons}>
         <GenerateBtn onClick={handleGenerate} />
