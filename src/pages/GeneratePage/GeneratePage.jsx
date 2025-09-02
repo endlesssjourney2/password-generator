@@ -47,9 +47,10 @@ const GeneratePage = () => {
     setIncludeSpecialChars(e.target.checked);
   };
 
-  const handleInputValidation = (e) => {
-    const value = Number(e.target.value);
-    if (value < 6) setLength(6);
+  const handleInputValidation = () => {
+    const value = Number(length);
+    if (isNaN(value)) setLength(8);
+    else if (value < 6) setLength(6);
     else if (value > 16) setLength(16);
     else setLength(value);
   };
@@ -86,7 +87,8 @@ const GeneratePage = () => {
             min="6"
             max="16"
             value={length}
-            onChange={handleInputValidation}
+            onChange={(e) => setLength(e.target.value)}
+            onBlur={handleInputValidation}
           />
         </label>
       </div>
