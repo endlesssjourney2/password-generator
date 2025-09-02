@@ -48,9 +48,13 @@ const GeneratePage = () => {
   };
 
   const handleInputValidation = () => {
+    if (length === "" || isNaN(length)) {
+      setLength(8);
+      return;
+    }
+
     const value = Number(length);
-    if (isNaN(value)) setLength(8);
-    else if (value < 6) setLength(6);
+    if (value < 6) setLength(6);
     else if (value > 16) setLength(16);
     else setLength(value);
   };
